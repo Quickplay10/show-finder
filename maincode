@@ -1,0 +1,133 @@
+//app would ideally pull from a large database, but for now has test data due to time limit :)
+//defining arrays
+var nameNMovie=["Sweet Magnolias","White Lines","Insatiable","I Am Not Okay With This"];
+var descNMovie=["Lifelong friends Maddie, Helen and Dana Sue lift each other up as they juggle relationships, family and careers in the small, Southern town of Serenity.","Zoe Walker leaves her quiet life behind to investigate her brother's disappearance in Ibiza, where she quickly heads down a decadent and dangerous path.","A bullied teenager turns to beauty pageants as a way to exact her revenge, with the help of a disgraced coach who soon realizes he's in over his head.","Angsty Syd navigates high school awkwardness, family drama and an unrequited crush on her best friend while trying to rein in her budding superpowers."];
+var nameHMovie=["The Great", "The Mindy Project","The Good Place","Good Girls","Mom"];
+var descHMovie=["The Great is a satirical, comedic drama about the rise of Catherine the Great from outsider to the longest reigning female ruler in Russia's history. A fictionalized, fun and anachronistic story of an idealistic, romantic young girl, who arrives in Russia for an arranged marriage to the mercurial Emperor Peter. Hoping for love and sunshine, she finds instead a dangerous, depraved, backward world that she resolves to change. All she has to do is kill her husband, beat the church, baffle the military and get the court onside. A very modern story about the past which encompasses the many roles she played over her lifetime as lover, teacher, ruler, friend, and fighter.","A single-camera comedy, starring Mindy Kaling, that follows a skilled OB/GYN navigating the tricky waters of both her personal and professional life, as she pursues her dreams of becoming the perfect woman, finding the perfect man and getting her perfect romantic comedy ending.","From Michael Schur comes a smart, unique new comedy that follows Eleanor Shellstrop, an ordinary woman who, through an extraordinary string of events, enters the afterlife where she comes to realize that she hasn't been a very good person.","When three suburban moms get tired of trying to make ends meet, they decide it's time to stick up for themselves by robbing the local supermarket at (toy) gunpoint. But when the manager catches a glimpse of one of them and the loot is far more than they expected, it doesn't take long for the three best friends to realize the perfect getaway will be harder than they think.","Anna Faris and Emmy Award winner Allison Janney star in this often heart-wrenching comedy about a mother and daughter who are trying to get their life on track."];
+var nameDMovie=["The Mandalorian","Secret Society Of Second-Born Royals","Stargirl","Pick of the Litter","Pixar In Real Life"];
+var descDMovie=["A lone gunfighter makes his way through the outer reaches of the galaxy, far from the authority of the New Republic.","Follows Sam, a teenage royal rebel second in line to the throne of the kingdom of Illyria. Just as Sam's disinterest in the royal way of life is at an all-time high, she discovers she has super-human abilities and is invited to join a secret society of similar extraordinary second-born royals charged with keeping the world safe. With guidance from their Secret Society instructor James, Sam and a new class of royal recruits must first learn to harness their new powers at a top-secret training camp before they can save the world.","“Stargirl” from Disney+ is a tender and offbeat coming-of-age story based on the critically-acclaimed, New York Times’ best-selling young adult novel about an unassuming high schooler who finds himself inexplicably drawn to the free-spirited new girl, whose unconventional ways change how they see themselves…and their world.","A docu-series based on the film of the same name, featuring the stories of service animals, their trainers, and their human companions. Follow the six loveable dogs; Paco, Pacino, Tulane, Raffi, Amara, and Tartan as they embark on a fascinating and suspenseful quest to become Guide Dogs For the Blind, the ultimate canine career.","This live action series brings iconic characters and moments from Pixar films into the real world. Filmed on location in and around New York City, the series surprises and delights real people in real locations when they least expect it."];
+var nameAMovie=["Good Girls Revolt","Tales from the Loop","Lady Bird"];
+var descAMovie=["This Amazon-original series is set in New York in the late 1960s, when a cultural revolution was sweeping through the free world. One place that was not quick to change with the times was newsrooms. Inspired by real events, it follows Patti Robinson and her fellow female researchers at News of the Week, who decide to ask for equal treatment. Their quest initiates an upheaval that impacts romantic relationships, careers and friendships, and propels Patti and her friends into unfamiliar territory that they never dreamed of.","Inspired by the futuristic paintings and designs of Swedish artist Simon Stålenhag, this Amazon original series centers on a small rural town where people live above “The Loop,” a machine built to unlock and explore the mysteries of the universe. Duncan Joiner and Rebecca Hall star in this drama that aims to make the science fiction appear more real-life than ever.","A warm, affectionate comedy about a high school senior (Saoirse Ronan) who must navigate a loving but turbulent relationship with her strong-willed mother over the course of her eventful and poignant senior year of high school."];
+//buttons on home pages
+onEvent("netflixbut", "click", function(event) {
+  setScreen("showfinderN");
+});
+onEvent("disneybut", "click", function(event) {
+  setScreen("showfinderD");
+});
+onEvent("hulubut", "click", function(event) {
+  setScreen("showfinderH");
+});
+onEvent("primebut", "click", function(event) {
+  setScreen("showfindA");
+});
+onEvent("selMul", "click", function(event) {
+  setScreen("selMulPage");
+});
+//back buttons throughout the app
+onEvent("backbut", "click", function(event) {
+  setScreen("homeScreen");
+});
+onEvent("backbut2", "click", function(event) {
+  setScreen("homeScreen");
+});
+onEvent("backbut3", "click", function(event) {
+ setScreen("homeScreen");
+});
+onEvent("backbut4", "click", function(event) {
+  setScreen("homeScreen");
+});
+onEvent("backbut5", "click", function(event) {
+  setScreen("homeScreen");
+});
+//randomize buttons throughout the app
+onEvent("randomizebut", "click", function(event) {
+  var nametext="";
+  var desctext="";
+  var index=0;
+  index=randomNumber(0,nameNMovie.length);
+  nametext=nameNMovie[index];
+  desctext=descNMovie[index];
+  
+  setText("title",nametext);
+  setText("desc", desctext);
+  showElement("desc");
+  showElement("title");
+});
+onEvent("randombut2", "click", function(event) {
+  var nametext="";
+  var desctext="";
+  var index=0;
+  var nameCheckedMovie=[];
+  var descCheckedMovie=[];
+  if(getChecked("netyesno")==true){
+    for(var i=0;i<nameNMovie.length; i++){
+      appendItem(nameCheckedMovie,nameNMovie[i]);
+      appendItem(descCheckedMovie,descNMovie[i]);
+    }
+  }
+  if(getChecked("huluyesno")==true){
+    for(var j=0;j<nameHMovie.length; j++){
+      appendItem(nameCheckedMovie,nameHMovie[j]);
+      appendItem(descCheckedMovie,descHMovie[j]);
+    }
+  }
+  if(getChecked("amazonyesno")==true){
+    for(var k=0;k<nameAMovie.length; k++){
+      appendItem(nameCheckedMovie,nameAMovie[k]);
+      appendItem(descCheckedMovie,descAMovie[k]);
+    }
+  }
+  if(getChecked("disneyyesno")==true){
+    for(var l=0;l<nameDMovie.length; l++){
+      appendItem(nameCheckedMovie,nameDMovie[l]);
+      appendItem(descCheckedMovie,descDMovie[l]);
+    }
+  }
+  index=randomNumber(0,nameCheckedMovie.length);
+  nametext=nameCheckedMovie[index];
+  desctext=descCheckedMovie[index];
+  setText("title2",nametext);
+  setText("desc2", desctext);
+  showElement("desc2");
+  showElement("title2");
+});
+onEvent("randombut3", "click", function(event) {
+  var nametext="";
+  var desctext="";
+  var index=0;
+  index=randomNumber(0,nameHMovie.length);
+  nametext=nameHMovie[index];
+  desctext=descHMovie[index];
+  
+  setText("titleH",nametext);
+  setText("descH", desctext);
+  showElement("descH");
+  showElement("titleH");
+});
+onEvent("randombut4", "click", function(event) {
+  var nametext="";
+  var desctext="";
+  var index=0;
+  index=randomNumber(0,nameDMovie.length);
+  nametext=nameDMovie[index];
+  desctext=descDMovie[index];
+  
+  setText("titleD",nametext);
+  setText("descD", desctext);
+  showElement("descD");
+  showElement("titleD");
+});
+onEvent("randombut5", "click", function(event) {
+  var nametext="";
+  var desctext="";
+  var index=0;
+  index=randomNumber(0,nameAMovie.length);
+  nametext=nameAMovie[index];
+  desctext=descAMovie[index];
+  
+  setText("titleA",nametext);
+  setText("descA", desctext);
+  showElement("descA");
+  showElement("titleA");
+});
